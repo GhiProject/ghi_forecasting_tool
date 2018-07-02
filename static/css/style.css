@@ -39,8 +39,7 @@ body {
 .heading-3 {
   font-size: 3.25rem; }
   .heading-3--landing {
-    grid-column: center-start / center-end;
-    justify-self: center; }
+    text-align: center; }
 
 .heading-4 {
   font-size: 2.75rem; }
@@ -78,7 +77,8 @@ body {
 .header {
   display: flex; }
   .header__img {
-    width: 4%;
+    width: 6rem;
+    height: 6rem;
     margin: 2px 0 2px 6rem; }
 
 .hero {
