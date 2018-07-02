@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "watch:sass": "node-sass sass/main.scss static/css/style.css -w"
-  },
-  "dependencies": {
-    "node-sass": "^4.9.0"
-  }
-}
