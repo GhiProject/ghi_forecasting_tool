@@ -1,0 +1,9 @@
+flask
+flask_sqlalchemy
+flask_wtf
+
+pandas
+
+gspread
+oauth2client
+pprint
