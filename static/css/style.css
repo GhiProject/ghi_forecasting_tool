@@ -133,7 +133,8 @@ body {
   overflow: hidden;
   background-image: linear-gradient(105deg, transparent 60%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 0.6) 100%), url(../img/background1.jpg);
   background-size: 100%;
-  background-position: 0 35%; }
+  background-position: 0 35%;
+  background-repeat: no-repeat; }
   .hero__text {
     height: 100%;
     width: 35%;
@@ -150,7 +151,7 @@ body {
   grid-template-columns: repeat(2, [col-end] minmax(min-content, 45rem) [col-end]);
   justify-content: center; }
   .landing-select__section:link, .landing-select__section:visited {
-    padding: 4rem 3rem;
+    padding: 4rem 3em;
     display: flex;
     align-items: center;
     text-decoration: none;
