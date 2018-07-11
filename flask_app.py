@@ -1,11 +1,12 @@
-'''
-Library/API Imports
-'''
 from flask import Flask, render_template, request, jsonify
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pprint
 import sys
+
+
+#sys.path.append("routes")
+#from main import *
 
 
 app = Flask(__name__)
@@ -17,13 +18,7 @@ def index():
     return render_template('landing.html', showthediv=0)
 
 
-sys.path.append("routes")
-from main import *
 
-
-'''
-"/form" Routes
-'''
 @app.route("/form")
 def form():
     method = request.args.get("method")
