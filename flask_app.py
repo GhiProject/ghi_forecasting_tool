@@ -5,23 +5,20 @@ from flask import Flask, render_template, request, jsonify
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pprint
+import sys
 
 
-'''
-Library Namespaces
-'''
 app = Flask(__name__)
 pp = pprint.PrettyPrinter()
 
 
-
-'''
-"/" Routes
-'''
 @app.route('/')
 def index():
     return render_template('landing.html', showthediv=0)
 
+
+sys.path.append("routes")
+from main import *
 
 
 '''
