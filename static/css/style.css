@@ -151,7 +151,7 @@ body {
   grid-template-columns: repeat(2, [col-end] minmax(min-content, 45rem) [col-end]);
   justify-content: center; }
   .landing-select__section:link, .landing-select__section:visited {
-    padding: 4rem 3em;
+    padding: 4rem 3rem;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -166,3 +166,11 @@ body {
   .landing-select__text {
     font-size: 2rem;
     color: black; }
+
+.form {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  background-color: lightblue; }
+
+.forecast-form > select {
+  font-size: 100rem; }
