@@ -1,154 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-    <div class="forecast-form">
-        <form action="#" class="form">
-            <select name="form__years" id="years" onchange=selectedYear(event)>
-                <option value="" selected>Choose a year</option>
-                <option value="2010">2010</option>
-                <option value="2013">2013</option>
-                <option value="2015">2015</option>
-            </select>
-            <select name="form__countries" id="countries" onchange="selectedCountry(event)" disabled>
-                <option value="" selected>Choose a country</option>
-            </select>
-            <select name="form__diseases" id="diseases" onchange="selectedDisease(event)" disabled>
-                <option value="" selected>Choose a disease</option>
-            </select>
-            <select name="form__companies" id="companies" onchange="selectedCompany(event)" disabled>
-                <option value="" selected>Choose a company</option>
-            </select>
-            <select name="form__drugs" id="drugs" onchange="selectedDrug(event)" disabled>
-                <option value="" selected>Choose a drug</option>
-            </select>
-        </form>
-   </div>
+{% extends "layout.html" %}
 
-   <script>
-        var _year = "";
-        var _country = "";
-        var _disease = "";
-        var _company = "";
-        var _drug = "";
+{% block title%}
+<title>Document</title>
+{% endblock%}
 
-        var _country_position_dict = {};
-        var _country_col = "";
-        var _country_row = "";
+{% block style_and_scripts %}
+<script src="../static/scripts/jquery-3.3.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+{% endblock %}
 
-        var _country_options_ele = document.getElementById("countries");
-        var _disease_options_ele = document.getElementById("diseases");
-        var _company_options_ele = document.getElementById("companies");
-        var _drug_options_ele = document.getElementById("drugs");
+{% block content %}
+<div class="forecast-form">
+    <form action="#" class="form">
+        <select name="form__years" id="years" onchange=selectedYear(event)>
+            <option value="" selected>Choose a year</option>
+            <option value="2010">2010</option>
+            <option value="2013">2013</option>
+            <option value="2015">2015</option>
+        </select>
+        <select name="form__countries" id="countries" onchange="selectedCountry(event)" disabled>
+            <option value="" selected>Choose a country</option>
+        </select>
+        <select name="form__diseases" id="diseases" onchange="selectedDisease(event)" disabled>
+            <option value="" selected>Choose a disease</option>
+        </select>
+        <select name="form__companies" id="companies" onchange="selectedCompany(event)" disabled>
+            <option value="" selected>Choose a company</option>
+        </select>
+        <select name="form__drugs" id="drugs" onchange="selectedDrug(event)" disabled>
+            <option value="" selected>Choose a drug</option>
+        </select>
+    </form>
+
+    <!--
+    <div class="dropdown" tabindex="0">
+        <span class="dropdown__value">Select year</span>
+        <ul class="dropdown__list">
+            <li class="dropdown__item">2010</li>
+            <li class="dropdown__item">2013</li>
+            <li class="dropdown__item">2015</li>
+        </ul>
+    </div>
+    -->
+
+</div>
+
+<script>
+    var _year = "";
+    var _country = "";
+    var _disease = "";
+    var _company = "";
+    var _drug = "";
+
+    var _country_position_dict = {};
+    var _country_col = "";
+    var _country_row = "";
+
+    var _year_options_ele = document.getElementById("years");
+    var _country_options_ele = document.getElementById("countries");
+    var _disease_options_ele = document.getElementById("diseases");
+    var _company_options_ele = document.getElementById("companies");
+    var _drug_options_ele = document.getElementById("drugs");
 
 
-       /*
-        *   Helper Methods
-        */
-        function createURL(method) {
-            return "/form?method=" + method
-                   +"&year=" + _year
-                   +"&country=" + _country
-                   +"&country_row=" + _country_row
-                   +"&country_col=" + _country_col
-                   +"&disease=" + _disease
-                   +"&company=" + _company
-                   +"&drug=" + _drug;
-        }
+    /*
+    *   Helper Methods
+    */
+    function createURL(method) {
+        return "/form?method=" + method
+                +"&year=" + _year
+                +"&country=" + _country
+                +"&country_row=" + _country_row
+                +"&country_col=" + _country_col
+                +"&disease=" + _disease
+                +"&company=" + _company
+                +"&drug=" + _drug;
+    }
 
 
-       /*
-        *   Event handlers
-        */
-        function selectedYear(event) {
-            _year = event.target.value;
-            /// Retrieve Country values from host
-            fetch(createURL("getCountries")).then(function(response){
-                /// Fill out country values based on year
-                _country_position_dict = {}; //reset global dict
-                response.json().then(function(json){
-                    //console.log(json);
-                    for(let i = 0; i < json.countries.length; i++){
-                        let country_name = json.countries[i]["country"];
-                        // Insert into form
-                        _country_options_ele.insertAdjacentHTML(
-                            "beforeend",
-                            `<option value="${country_name}">${country_name}</option>`
-                        );
-                        // Track row/col position in global dict
-                        _country_position_dict[country_name] = { 
-                            row: json.countries[i]["row"], 
-                            col: json.countries[i]["col"] 
-                        };
-                    }
-                });
-                _country_options_ele.removeAttribute("disabled");
+    /*
+    *   Event handlers
+    */
+    function selectedYear(event) {
+        _year = event.target.value;
+        /// Retrieve Country values from host
+        fetch(createURL("getCountries")).then(function(response){
+            /// Fill out country values based on year
+            _country_position_dict = {}; //reset global dict
+            response.json().then(function(json){
+                //console.log(json);
+                for(let i = 0; i < json.countries.length; i++){
+                    let country_name = json.countries[i]["country"];
+                    // Insert into form
+                    _country_options_ele.insertAdjacentHTML(
+                        "beforeend",
+                        `<option value="${country_name}">${country_name}</option>`
+                    );
+                    // Track row/col position in global dict
+                    _country_position_dict[country_name] = { 
+                        row: json.countries[i]["row"], 
+                        col: json.countries[i]["col"] 
+                    };
+                }
             });
-        }
+            _country_options_ele.removeAttribute("disabled");
+        });
+    }
 
-        function selectedCountry(event) {
-            _country = event.target.value;
-            _country_row = _country_position_dict[_country].row;
-            _country_col = _country_position_dict[_country].col;
-            /// Retrieve disease values from host
-            fetch(createURL("getDiseases")).then(function(response){
-                /// Fill out disease values based on country
-                response.json().then(function(json){
-                    console.log(json)
-                    for(let i = 0; i < json.diseases.length; i++){
-                        let disease_name = json.diseases[i]["disease"];
-                        // Insert into form
-                        _disease_options_ele.insertAdjacentHTML(
-                            "beforeend",
-                            `<option value="${disease_name}">${disease_name}</option>`
-                        );
-                    }
-                });
-                _disease_options_ele.removeAttribute("disabled");
+    function selectedCountry(event) {
+        _country = event.target.value;
+        _country_row = _country_position_dict[_country].row;
+        _country_col = _country_position_dict[_country].col;
+        /// Retrieve disease values from host
+        fetch(createURL("getDiseases")).then(function(response){
+            /// Fill out disease values based on country
+            response.json().then(function(json){
+                console.log(json)
+                for(let i = 0; i < json.diseases.length; i++){
+                    let disease_name = json.diseases[i]["disease"];
+                    // Insert into form
+                    _disease_options_ele.insertAdjacentHTML(
+                        "beforeend",
+                        `<option value="${disease_name}">${disease_name}</option>`
+                    );
+                }
             });
-        }
+            _disease_options_ele.removeAttribute("disabled");
+        });
+    }
 
-        function selectedDisease(event) {
-            _disease = event.target.value;
-            /// Retrieve company values from host
-            fetch(createURL("getCompanies")).then(function(response){
-                /// Fill out company values based on disease
-                response.json().then(function(json){
-                    for(let i = 0; i < json.company.length; i++){
-                        _disease_options_ele.insertAdjacentHTML(
-                            "beforeend",
-                            `<option value="${json.companies[i]}">${json.companies[i]}</option>`
-                        );
-                    }
-                });
-                _company_options_ele.removeAttribute("disabled");
+    function selectedDisease(event) {
+        _disease = event.target.value;
+        /// Retrieve company values from host
+        fetch(createURL("getCompanies")).then(function(response){
+            /// Fill out company values based on disease
+            response.json().then(function(json){
+                for(let i = 0; i < json.company.length; i++){
+                    _disease_options_ele.insertAdjacentHTML(
+                        "beforeend",
+                        `<option value="${json.companies[i]}">${json.companies[i]}</option>`
+                    );
+                }
             });
-        }
-       
-        function selectedCompany(event) {
-            _company = event.target.value;
-            /// Retrieve drug values from host
-            fetch(createURL("getDrugs")).then(function(response){
-                /// Fill out drug values based on country
-                response.json().then(function(json){
-                    for(let i = 0; i < json.drugs.length; i++){
-                        _drugs_options_ele.insertAdjacentHTML(
-                            "beforeend",
-                            `<option value="${json.drugs[i]}">${json.drugs[i]}</option>`
-                        );
-                    }
-                });
-                _drugs_options_ele.removeAttribute("disabled");
+            _company_options_ele.removeAttribute("disabled");
+        });
+    }
+    
+    function selectedCompany(event) {
+        _company = event.target.value;
+        /// Retrieve drug values from host
+        fetch(createURL("getDrugs")).then(function(response){
+            /// Fill out drug values based on country
+            response.json().then(function(json){
+                for(let i = 0; i < json.drugs.length; i++){
+                    _drugs_options_ele.insertAdjacentHTML(
+                        "beforeend",
+                        `<option value="${json.drugs[i]}">${json.drugs[i]}</option>`
+                    );
+                }
             });
-        }
+            _drugs_options_ele.removeAttribute("disabled");
+        });
+    }
 
-        function selectedDrug(event) {
+    function selectedDrug(event) {
 
-        }
+    }
 
-    </script>
-</body>
-</html>
+    $(document).ready(function(){
+        /// Apply 'select2' functionality to <select> elements
+        $("#years").select2();
+        $("#countries").select2();
+        $("#companies").select2();
+        $("#drugs").select2();
+        $("#diseases").select2();
+    });
+
+</script>
+{%block content%}

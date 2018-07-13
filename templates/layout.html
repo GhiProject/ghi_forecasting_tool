@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block title %}
+    {% endblock %}
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block style_and_scripts %}
+    {% endblock %}
+</head>
+<body>
+    <div class="landing-container">
+        <header class="header">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image" class="header__img">
+        </header>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
