@@ -10,6 +10,9 @@
                         rgba(white, .6) 60%, 
                         rgba(white, .6) 100%),
                         url(../img/background1.jpg);
+    &--form {
+        background-image: url(../img/country.jpg);
+    }
     background-size: 100%;
     background-position: 0 35%;
     background-repeat: no-repeat;
