@@ -24,4 +24,27 @@
         background-color: $color-primary-light;
     }
 
+    /* Display when mobile size and hide otherwise */
+    &--mobile {
+        
+        // By default, do not display
+        display: none;
+
+        // Display when the screen gets small enough
+        @media (max-width: 37.5rem) { //600px
+            display: initial; //restore display to its default value
+        }
+
+    }
+
+    /* Hide desktop buttons when in mobile size */
+    &--desktop {
+
+        // hide desktop elements when the screen is small enought
+        @media (max-width: 37.5rem) { //600px
+            display: none;
+        }
+
+    }
+
 }

@@ -123,22 +123,31 @@ body {
 .u-hidden {
   visibility: hidden !important; }
 
-.button, .button:link, .button:visited {
-  border-radius: 2px;
-  color: white;
-  background-color: #1980CA;
-  transition: all .2s;
-  align-content: center;
-  justify-content: center;
-  padding: 1rem 4rem;
-  border: none; }
-
-.button:active, .button:focus {
-  outline: none; }
-
-.button:hover {
-  cursor: pointer;
-  background-color: #52A1D8; }
+.button {
+  /* Display when mobile size and hide otherwise */
+  /* Hide desktop buttons when in mobile size */ }
+  .button, .button:link, .button:visited {
+    border-radius: 2px;
+    color: white;
+    background-color: #1980CA;
+    transition: all .2s;
+    align-content: center;
+    justify-content: center;
+    padding: 1rem 4rem;
+    border: none; }
+  .button:active, .button:focus {
+    outline: none; }
+  .button:hover {
+    cursor: pointer;
+    background-color: #52A1D8; }
+  .button--mobile {
+    display: none; }
+    @media (max-width: 37.5rem) {
+      .button--mobile {
+        display: initial; } }
+  @media (max-width: 37.5rem) {
+    .button--desktop {
+      display: none; } }
 
 .dropdown {
   position: relative;
