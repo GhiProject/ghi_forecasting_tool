@@ -32,6 +32,27 @@ body {
 
 .heading-1 {
   font-size: 5rem; }
+  @media (max-width: 68.75em) {
+    .heading-1 {
+      font-size: 4.5rem; } }
+  @media (max-width: 62.5em) {
+    .heading-1 {
+      font-size: 4rem; } }
+  @media (max-width: 56.25em) {
+    .heading-1 {
+      font-size: 3rem; } }
+  @media (max-width: 43.75em) {
+    .heading-1 {
+      font-size: 2.25rem; } }
+  @media (max-width: 34.375em) {
+    .heading-1 {
+      font-size: 2rem; } }
+  @media (max-width: 28.125em) {
+    .heading-1 {
+      font-size: 1.75rem; } }
+  @media (max-width: 28.125em) {
+    .heading-1 {
+      font-size: 1.2rem; } }
 
 .heading-2 {
   font-size: 4rem; }
@@ -40,9 +61,33 @@ body {
   font-size: 3.25rem; }
   .heading-3--landing {
     text-align: center; }
+  @media (max-width: 31.25em) {
+    .heading-3 {
+      font-size: 2.25rem; } }
 
 .heading-4 {
   font-size: 2.75rem; }
+  @media (max-width: 68.75em) {
+    .heading-4 {
+      font-size: 2.5rem; } }
+  @media (max-width: 62.5em) {
+    .heading-4 {
+      font-size: 2.25rem; } }
+  @media (max-width: 56.25em) {
+    .heading-4 {
+      font-size: 2rem; } }
+  @media (max-width: 43.75em) {
+    .heading-4 {
+      font-size: 1.75rem; } }
+  @media (max-width: 34.375em) {
+    .heading-4 {
+      font-size: 1.25rem; } }
+  @media (max-width: 28.125em) {
+    .heading-4 {
+      font-size: .75rem; } }
+  @media (max-width: 25em) {
+    .heading-4 {
+      font-size: .75rem; } }
 
 .u-margin-bottom-smallest {
   margin-bottom: .5rem !important; }
