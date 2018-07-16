@@ -1,0 +1,27 @@
+.button {
+    &,
+    &:link,
+    &:visited {
+        border-radius: 2px;
+        color: white;
+        background-color: $color-primary;
+        transition: all .2s;
+        align-content: center;
+        justify-content: center;
+
+        padding: 1rem 4rem;
+
+        border: none;
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: $color-primary-light;
+    }
+
+}
