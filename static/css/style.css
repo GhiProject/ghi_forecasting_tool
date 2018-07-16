@@ -191,14 +191,10 @@ body {
   overflow: hidden;
   background-image: linear-gradient(105deg, transparent 60%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 0.6) 100%), url(../img/background1.jpg);
   background-size: 100%;
-<<<<<<< HEAD
   background-position: 0 35%;
   background-repeat: no-repeat; }
-=======
-  background-position: 0 35%; }
   .hero--form {
     background-image: url(../img/country.jpg); }
->>>>>>> 63e919f6d824607537a1eedd57cebbbcd01925c9
   .hero__text {
     height: 100%;
     width: 35%;
@@ -238,14 +234,11 @@ body {
   .landing-select__text {
     font-size: 2rem;
     color: black; }
-<<<<<<< HEAD
     @media (max-width: 18.75rem) {
       .landing-select__text {
         font-size: 1.7rem; } }
-=======
 
 .form-container {
   width: 60%;
   margin: 0 auto;
   padding-top: 5rem; }
->>>>>>> 63e919f6d824607537a1eedd57cebbbcd01925c9
