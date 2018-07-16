@@ -74,6 +74,63 @@ body {
 .shadow-sm {
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15) !important; }
 
+.u-hidden {
+  visibility: hidden !important; }
+
+.button, .button:link, .button:visited {
+  border-radius: 2px;
+  color: white;
+  background-color: #1980CA;
+  transition: all .2s;
+  align-content: center;
+  justify-content: center;
+  padding: 1rem 4rem;
+  border: none; }
+
+.button:active, .button:focus {
+  outline: none; }
+
+.button:hover {
+  cursor: pointer;
+  background-color: #52A1D8; }
+
+.dropdown {
+  position: relative;
+  /*Gives a reference point for child elements*/
+  display: inline-block;
+  font-size: 1rem;
+  padding: .1rem 2.5rem .2rem .5rem;
+  width: 10rem;
+  border: .2em solid #000; }
+  .dropdown.active, .dropdown:focus {
+    outline: none;
+    box-shadow: 0 0 3px 1px #227755; }
+  .dropdown__list {
+    position: absolute;
+    top: 100%;
+    left: 0; }
+  .dropdown__list--hidden {
+    max-height: 0;
+    visibility: hidden; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; }
+  .form__dropdown {
+    width: 30rem; }
+  .form__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .form__group:not(:last-child) {
+      padding-bottom: 2rem; }
+  .form__control-group {
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+
 .header {
   display: flex; }
   .header__img {
@@ -89,6 +146,8 @@ body {
   background-image: linear-gradient(105deg, transparent 60%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 0.6) 100%), url(../img/background1.jpg);
   background-size: 100%;
   background-position: 0 35%; }
+  .hero--form {
+    background-image: url(../img/country.jpg); }
   .hero__text {
     height: 100%;
     width: 35%;
@@ -120,3 +179,8 @@ body {
   .landing-select__text {
     font-size: 2rem;
     color: black; }
+
+.form-container {
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 5rem; }

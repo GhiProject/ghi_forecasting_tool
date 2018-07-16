@@ -14,11 +14,9 @@
     {% endblock %}
 </head>
 <body>
-    <div class="landing-container">
-        <header class="header">
-            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image" class="header__img">
-        </header>
-    </div>
+    <header class="header">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image" class="header__img">
+    </header>
     {% block content %}
     {% endblock %}
 </body>

@@ -1,0 +1,31 @@
+.dropdown {
+    position: relative; /*Gives a reference point for child elements*/
+    display: inline-block; 
+
+    font-size: 1rem;
+
+    padding: .1rem 2.5rem .2rem .5rem;
+    width: 10rem;
+
+    border: .2em solid #000;
+
+    &.active,
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 3px 1px #227755;
+    }
+
+    &__list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+
+    &__list {
+        &--hidden {
+            max-height: 0;
+            visibility: hidden;
+        }
+    }
+
+}

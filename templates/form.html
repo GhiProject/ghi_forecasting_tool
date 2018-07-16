@@ -11,40 +11,66 @@
 {% endblock %}
 
 {% block content %}
-<div class="forecast-form">
-    <form action="#" class="form">
-        <select name="form__years" id="years" onchange=selectedYear(event)>
-            <option value="" selected>Choose a year</option>
-            <option value="2010">2010</option>
-            <option value="2013">2013</option>
-            <option value="2015">2015</option>
-        </select>
-        <select name="form__countries" id="countries" onchange="selectedCountry(event)" disabled>
-            <option value="" selected>Choose a country</option>
-        </select>
-        <select name="form__diseases" id="diseases" onchange="selectedDisease(event)" disabled>
-            <option value="" selected>Choose a disease</option>
-        </select>
-        <select name="form__companies" id="companies" onchange="selectedCompany(event)" disabled>
-            <option value="" selected>Choose a company</option>
-        </select>
-        <select name="form__drugs" id="drugs" onchange="selectedDrug(event)" disabled>
-            <option value="" selected>Choose a drug</option>
-        </select>
-    </form>
-
-    <!--
-    <div class="dropdown" tabindex="0">
-        <span class="dropdown__value">Select year</span>
-        <ul class="dropdown__list">
-            <li class="dropdown__item">2010</li>
-            <li class="dropdown__item">2013</li>
-            <li class="dropdown__item">2015</li>
-        </ul>
-    </div>
-    -->
+<div class="hero hero--form">
 
 </div>
+
+<div class="form-container">
+    <form action="#" class="form">
+
+        <div class="form__group">
+            <label for="years">Select a year:</label>
+            <select name="form__years" id="years" onchange=selectedYear(event) class="form__dropdown">
+                <option value="2010">2010</option>
+                <option value="2013">2013</option>
+                <option value="2015">2015</option>
+            </select>
+        </div>
+
+        <div class="form__group">
+            <label for="countries">Select a country:</label>
+            <select name="form__countries" id="countries" onchange="selectedCountry(event)" disabled class="form__dropdown">
+            </select>
+        </div>
+
+        <div class="form__group">
+            <label for="diseases">Select a disease:</label>
+            <select name="form__diseases" id="diseases" onchange="selectedDisease(event)" disabled class="form__dropdown">
+            </select>
+        </div>
+       
+        <div class="form__group">
+            <label for="companies">Select a company:</label>
+            <select name="form__companies" id="companies" onchange="selectedCompany(event)" disabled class="form__dropdown">
+            </select>
+        </div>
+
+        <div class="form__group">
+            <label for="drugs">Select a drug:</label>
+            <select name="form__drugs" id="drugs" onchange="selectedDrug(event)" disabled class="form__dropdown">
+            </select>
+        </div>
+
+        <div class="form__control-group">
+            <div class="button" id="back-btn">
+                &larr; Back
+            </div>
+            <div class="button button--notactive">
+                Submit
+            </div>
+        </div>
+   </form>
+</div>
+<!--
+<div class="dropdown" tabindex="0">
+    <span class="dropdown__value">Select year</span>
+    <ul class="dropdown__list">
+        <li class="dropdown__item">2010</li>
+        <li class="dropdown__item">2013</li>
+        <li class="dropdown__item">2015</li>
+    </ul>
+</div>
+-->
 
 <script>
     var _year = "";
@@ -63,6 +89,9 @@
     var _company_options_ele = document.getElementById("companies");
     var _drug_options_ele = document.getElementById("drugs");
 
+    var _back_btn_ele = document.getElementById("back-btn");
+
+    var _currently_selected_group = "years";
 
     /*
     *   Helper Methods
@@ -77,6 +106,13 @@
                 +"&company=" + _company
                 +"&drug=" + _drug;
     }
+    
+    function deselectForm(form_element) {
+        /// Deselect element
+        form_element.attr("disabled", "disabled");
+        /// Change value to nothing
+        form_element.selectedIndex = 0;
+    }
 
 
     /*
@@ -84,6 +120,11 @@
     */
     function selectedYear(event) {
         _year = event.target.value;
+        /// Deselect next elements
+        deselectForm($("#countries"));
+        deselectForm($("#companies"));
+        deselectForm($("#diseases"));
+        deselectForm($("#drugs"));
         /// Retrieve Country values from host
         fetch(createURL("getCountries")).then(function(response){
             /// Fill out country values based on year
@@ -112,11 +153,15 @@
         _country = event.target.value;
         _country_row = _country_position_dict[_country].row;
         _country_col = _country_position_dict[_country].col;
+        /// Deselect next elements
+        deselectForm($("#companies"));
+        deselectForm($("#diseases"));
+        deselectForm($("#drugs"));
         /// Retrieve disease values from host
         fetch(createURL("getDiseases")).then(function(response){
-            /// Fill out disease values based on country
+           /// Fill out disease values based on country
             response.json().then(function(json){
-                console.log(json)
+                //console.log(json)
                 for(let i = 0; i < json.diseases.length; i++){
                     let disease_name = json.diseases[i]["disease"];
                     // Insert into form
@@ -127,11 +172,15 @@
                 }
             });
             _disease_options_ele.removeAttribute("disabled");
+            
         });
     }
 
     function selectedDisease(event) {
         _disease = event.target.value;
+        /// Deselect next elements
+        deselectForm($("#companies"));
+        deselectForm($("#drugs"));
         /// Retrieve company values from host
         fetch(createURL("getCompanies")).then(function(response){
             /// Fill out company values based on disease
@@ -144,11 +193,14 @@
                 }
             });
             _company_options_ele.removeAttribute("disabled");
+            _currently_selected_group = "diseases";
         });
     }
     
     function selectedCompany(event) {
         _company = event.target.value;
+        /// Deselect next elements
+        deselectForm($("#drugs"));
         /// Retrieve drug values from host
         fetch(createURL("getDrugs")).then(function(response){
             /// Fill out drug values based on country
@@ -161,21 +213,62 @@
                 }
             });
             _drugs_options_ele.removeAttribute("disabled");
+            _currently_selected_group = "companies";
         });
     }
 
     function selectedDrug(event) {
-
+        _currently_selected_group = "drugs";
     }
 
     $(document).ready(function(){
+        /// Append empty option for placeholder functionality
+        $("#years").prepend("<option value='' selected='selected'></option>");
+        $("#countries").prepend("<option value='' selected='selected'></option>");
+        $("#companies").prepend("<option value='' selected='selected'></option>");
+        $("#drugs").prepend("<option value='' selected='selected'></option>");
+        $("#diseases").prepend("<option value='' selected='selected'></option>");
+
         /// Apply 'select2' functionality to <select> elements
-        $("#years").select2();
-        $("#countries").select2();
-        $("#companies").select2();
-        $("#drugs").select2();
-        $("#diseases").select2();
+        $("#years").select2({minimumResultsForSearch: -1, placeholder: "Year"});
+        $("#countries").select2({placeholder: "Country"});
+        $("#companies").select2({placeholder: "Company"});
+        $("#drugs").select2({placeholder: "Drug"});
+        $("#diseases").select2({placeholder: "Disease"});
+
+        /// Reset form selections
+        deselectForm($("#countries"));
+        deselectForm($("#companies"));
+        deselectForm($("#drugs"));
+        deselectForm($("#diseases"));
+
+        /// Button onClick events
+        _back_btn_ele.addEventListener("click", function(event){
+            console.log(_currently_selected_group);
+            switch(_currently_selected_group){
+                case "years":
+                    return;
+                case "countries":
+                    deselectForm($("#"+_currently_selected_group));
+                    _currently_selected_group = "years";
+                    break;
+                case "companies":
+                    deselectForm($("#"+_currently_selected_group));
+                    _currently_selected_group = "countries";
+                    break;
+                case "drugs":
+                    deselectForm($("#"+_currently_selected_group));
+                    _currently_selected_group = "companies";
+                    break;
+                case "diseases":
+                    deselectForm($("#"+_currently_selected_group));
+                    _currently_selected_group = "drugs";
+                    break;
+                default:
+                    return;
+            }
+        });
     });
 
 </script>
-{%block content%}
+{% endblock %}

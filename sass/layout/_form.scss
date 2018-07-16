@@ -1,0 +1,27 @@
+.form {
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+
+    &__dropdown {
+        width: 30rem;
+    }
+
+    &__group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:not(:last-child) {
+            padding-bottom: 2rem;
+        }
+    }
+
+    &__control-group {
+        padding: 3rem 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
