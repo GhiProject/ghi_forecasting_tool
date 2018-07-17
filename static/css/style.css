@@ -217,10 +217,20 @@ body {
   .landing-select__section:hover {
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
   .landing-select__icon {
-    width: 6rem;
-    height: 6rem;
-    fill: royalblue;
-    margin: 0 4rem; }
+    width: 8rem;
+    height: 8rem;
+    margin: 0 4rem;
+    background-position: 0 0;
+    background-size: contain;
+    background-repeat: no-repeat; }
+    .landing-select__icon--bar {
+      background-image: url(../img/icon-bar-blue.png); }
+    .landing-select__icon--globe {
+      background-image: url(../img/icon-globe-blue.png); }
+    .landing-select__icon--pill {
+      background-image: url(../img/icon-pill-blue.png); }
+    .landing-select__icon--rx {
+      background-image: url(../img/icon-rx-blue.png); }
   .landing-select__text {
     font-size: 2rem;
     color: black; }

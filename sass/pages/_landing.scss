@@ -21,10 +21,26 @@
     }
 
     &__icon {
-        width: 6rem;
-        height: 6rem;
-        fill: royalblue;
+        width: 8rem;
+        height: 8rem;
+        //fill: royalblue;
         margin: 0 4rem;
+        background-position: 0 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        &--bar {
+            background-image: url(../img/icon-bar-blue.png);
+        }
+        &--globe {
+            background-image: url(../img/icon-globe-blue.png);
+        }
+        &--pill {
+            background-image: url(../img/icon-pill-blue.png);
+        }
+        &--rx {
+            background-image: url(../img/icon-rx-blue.png);
+        }
     }
 
     &__text {
