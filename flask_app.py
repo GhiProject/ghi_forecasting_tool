@@ -16,11 +16,6 @@ pp = pprint.PrettyPrinter()
 def index():
     return render_template('landing.html', showthediv=0)
 
-
-sys.path.append("routes")
-from main import *
-
-
 '''
 "/form" Routes
 '''
