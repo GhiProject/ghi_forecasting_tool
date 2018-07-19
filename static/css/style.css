@@ -251,3 +251,6 @@ body {
   width: 60%;
   margin: 0 auto;
   padding-top: 5rem; }
+  @media (max-width: 50rem) {
+    .form-container .form__group label {
+      display: none; } }

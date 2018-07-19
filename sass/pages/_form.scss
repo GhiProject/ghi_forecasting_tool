@@ -4,4 +4,21 @@
     margin: 0 auto;
 
     padding-top: 5rem;
+
+    .form {
+
+        &__group {
+
+            // Remove the labels if the screen gets small enough, so that 
+            // the layout can stay responsive
+            label {
+                @media (max-width: 50rem) { 
+                    display: none;
+                }
+            }
+
+        }
+
+    }
+
 }
