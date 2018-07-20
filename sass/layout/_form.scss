@@ -4,6 +4,22 @@
 
     align-items: stretch;
 
+    @media (max-width: 50rem) {
+
+        label {
+            display: none;
+        }
+
+        align-items: center;
+
+        &__control-group {
+            .button {
+                margin: 0 1rem;
+            }
+        }
+
+    }
+
     &__dropdown {
         width: 30rem;
     }

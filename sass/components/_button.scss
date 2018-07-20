@@ -24,7 +24,7 @@
         background-color: $color-primary-light;
     }
 
-    /* Display when mobile size and hide otherwise */
+    // Display when mobile size and hide otherwise
     &--mobile {
         
         // By default, do not display
@@ -37,7 +37,7 @@
 
     }
 
-    /* Hide desktop buttons when in mobile size */
+    // Hide desktop buttons when in mobile size
     &--desktop {
 
         // hide desktop elements when the screen is small enought
