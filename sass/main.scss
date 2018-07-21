@@ -1,6 +1,7 @@
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
+@import "base/animation";
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
@@ -13,4 +14,3 @@
 @import "layout/hero";
 
 @import "pages/landing";
-@import "pages/form"

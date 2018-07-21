@@ -86,6 +86,7 @@ def form():
                     {
                         "disease": worksheet.cell(2, disease_cell.col).value
                     }
+                    #TODO: This section takes far too long, needs optimizing
                     for disease_cell in disease_cells if disease_cell.value
                 ]
             )
@@ -123,6 +124,10 @@ def form():
 
     #TODO Return error status if method name is not matched
     return 
+
+@app.route("/form3")
+def form3():
+    return render_template("form3.html", showthediv=0)
 
 if __name__ == '__main__':
     app.run(debug=False)
