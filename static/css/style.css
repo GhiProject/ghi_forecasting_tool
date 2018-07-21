@@ -10,6 +10,29 @@
     font-size: 50%;
 }
 */
+@keyframes zoomIn {
+  0% { }
+  100% {
+    transform: scale(1.2); } }
+
+@keyframes moveInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem); }
+  80% {
+    transform: translateY(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes moveInUpNoM {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
 *,
 *::before,
 *::after {
@@ -122,6 +145,10 @@ body {
 .u-hidden {
   visibility: hidden !important; }
 
+.u-animate-moveInUp {
+  animation: moveInUpNoM 1s ease 1s !important;
+  animation-fill-mode: backwards !important; }
+
 .button, .button:link, .button:visited {
   border-radius: 2px;
   color: white;
@@ -158,12 +185,19 @@ body {
     max-height: 0;
     visibility: hidden; }
 
+.form-container {
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 5rem; }
+
 .form {
   display: flex;
   flex-direction: column;
   align-items: stretch; }
   .form__dropdown {
     width: 30rem; }
+  .form__input[type="number"] {
+    height: 1rem; }
   .form__group {
     display: flex;
     justify-content: space-between;
@@ -184,13 +218,22 @@ body {
     margin: 2px 0 2px 6rem; }
 
 .hero {
-  width: 100%;
-  height: 30vh;
+  height: 45vh;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(105deg, transparent 60%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 0.6) 100%), url(../img/background1.jpg);
-  background-size: 100%;
-  background-position: 0 35%; }
+  z-index: -1; }
+  .hero__inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/background1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0 20%;
+    animation-name: zoomIn;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; }
   .hero--form {
     background-image: url(../img/country.jpg); }
   .hero__text {
@@ -202,7 +245,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center; }
+    justify-content: center;
+    background-image: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 0.6) 100%); }
+    .hero__text__inner {
+      animation: moveInUp 1s ease 1s;
+      animation-fill-mode: backwards; }
 
 .landing-select {
   display: grid;
@@ -234,8 +281,3 @@ body {
   .landing-select__text {
     font-size: 2rem;
     color: black; }
-
-.form-container {
-  width: 60%;
-  margin: 0 auto;
-  padding-top: 5rem; }
