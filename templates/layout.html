@@ -15,7 +15,8 @@
 </head>
 <body>
     <header class="header">
-        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image" class="header__img">
+        <!-- <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo image" class="header__img"> -->
+        <a href="/"><img class="logo" src="{{ url_for('static',filename='img/logo.png') }}" alt="Global Health Impact" width="100px" /></a>
     </header>
     {% block content %}
     {% endblock %}

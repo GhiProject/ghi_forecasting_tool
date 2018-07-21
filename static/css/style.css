@@ -60,7 +60,8 @@ body {
 .heading-3 {
   font-size: 3.25rem; }
   .heading-3--landing {
-    text-align: center; }
+    text-align: center;
+    line-height: 1.3em; }
   @media (max-width: 31.25em) {
     .heading-3 {
       font-size: 2.25rem; } }
@@ -139,6 +140,16 @@ body {
   cursor: pointer;
   background-color: #52A1D8; }
 
+.button--mobile {
+  display: none; }
+  @media (max-width: 37.5rem) {
+    .button--mobile {
+      display: initial; } }
+
+@media (max-width: 37.5rem) {
+  .button--desktop {
+    display: none; } }
+
 .dropdown {
   position: relative;
   /*Gives a reference point for child elements*/
@@ -162,6 +173,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: stretch; }
+  @media (max-width: 50rem) {
+    .form {
+      align-items: center; }
+      .form label {
+        display: none; }
+      .form__control-group .button {
+        margin: 0 1rem; } }
   .form__dropdown {
     width: 30rem; }
   .form__group {
@@ -190,7 +208,8 @@ body {
   overflow: hidden;
   background-image: linear-gradient(105deg, transparent 60%, rgba(255, 255, 255, 0.6) 60%, rgba(255, 255, 255, 0.6) 100%), url(../img/background1.jpg);
   background-size: 100%;
-  background-position: 0 35%; }
+  background-position: 0 35%;
+  background-repeat: no-repeat; }
   .hero--form {
     background-image: url(../img/country.jpg); }
   .hero__text {
@@ -207,13 +226,21 @@ body {
 .landing-select {
   display: grid;
   grid-template-columns: repeat(2, [col-end] minmax(min-content, 45rem) [col-end]);
+  /* Change the options grid to 1 x 4 if the screen gets too small for 2 x 2 */
   justify-content: center; }
+  @media (max-width: 37.5rem) {
+    .landing-select {
+      grid-template-columns: repeat(1, [col-end] minmax(min-content, 45rem) [col-end]); } }
   .landing-select__section:link, .landing-select__section:visited {
     padding: 4rem 3rem;
     display: flex;
     align-items: center;
+    /* Without this, some laptop screens (<= 636px) have a small amount of scroll on  the landing page */
     text-decoration: none;
     transition: all .2s; }
+    @media (max-height: 40rem) {
+      .landing-select__section:link, .landing-select__section:visited {
+        padding: 3rem 2rem; } }
   .landing-select__section:hover {
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
   .landing-select__icon {
@@ -224,6 +251,9 @@ body {
   .landing-select__text {
     font-size: 2rem;
     color: black; }
+    @media (max-width: 18.75rem) {
+      .landing-select__text {
+        font-size: 1.7rem; } }
 
 .form-container {
   width: 60%;

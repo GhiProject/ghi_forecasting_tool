@@ -23,13 +23,13 @@ def index():
 def form():
     method = request.args.get("method")
 
-    ### 
+    ###
     ### Initial page, no parameters
     ###
     if method is None:
         return render_template("form.html", showthediv=0)
 
-    ### 
+    ###
     ### Modified page, retrieve method values from parameters
     ###
     else:
@@ -42,7 +42,7 @@ def form():
 
         country_row = request.args.get("country_row", type=int)
         country_col = request.args.get("country_col", type=int)
-        
+
         ## Authorize credentials
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json", scope)
@@ -70,7 +70,7 @@ def form():
                         "country":country_cell.value,
                         "row":country_cell.row,
                         "col":country_cell.col
-                    } 
+                    }
                     for country_cell in country_cells
                 ]
             )
@@ -122,7 +122,7 @@ def form():
 
 
     #TODO Return error status if method name is not matched
-    return 
+    return
 
 if __name__ == '__main__':
     app.run(debug=False)

@@ -18,45 +18,55 @@
 <div class="form-container">
     <form action="#" class="form">
 
-        <div class="form__group">
-            <label for="years">Select a year:</label>
-            <select name="form__years" id="years" onchange=selectedYear(event) class="form__dropdown">
-                <option value="2010">2010</option>
-                <option value="2013">2013</option>
-                <option value="2015">2015</option>
-            </select>
+        <!-- This is where all the dropdowns and labels are -->
+        <div class="form__selections-group">
+            <div class="form__group">
+                <label for="years">Select a year:</label>
+                <select name="form__years" id="years" onchange=selectedYear(event) class="form__dropdown">
+                    <option value="2010">2010</option>
+                    <option value="2013">2013</option>
+                    <option value="2015">2015</option>
+                </select>
+            </div>
+
+            <div class="form__group">
+                <label for="countries">Select a country:</label>
+                <select name="form__countries" id="countries" onchange="selectedCountry(event)" disabled class="form__dropdown">
+                </select>
+            </div>
+
+            <div class="form__group">
+                <label for="diseases">Select a disease:</label>
+                <select name="form__diseases" id="diseases" onchange="selectedDisease(event)" disabled class="form__dropdown">
+                </select>
+            </div>
+        
+            <div class="form__group">
+                <label for="companies">Select a company:</label>
+                <select name="form__companies" id="companies" onchange="selectedCompany(event)" disabled class="form__dropdown">
+                </select>
+            </div>
+
+            <div class="form__group">
+                <label for="drugs">Select a drug:</label>
+                <select name="form__drugs" id="drugs" onchange="selectedDrug(event)" disabled class="form__dropdown">
+                </select>
+            </div>
         </div>
 
-        <div class="form__group">
-            <label for="countries">Select a country:</label>
-            <select name="form__countries" id="countries" onchange="selectedCountry(event)" disabled class="form__dropdown">
-            </select>
-        </div>
-
-        <div class="form__group">
-            <label for="diseases">Select a disease:</label>
-            <select name="form__diseases" id="diseases" onchange="selectedDisease(event)" disabled class="form__dropdown">
-            </select>
-        </div>
-       
-        <div class="form__group">
-            <label for="companies">Select a company:</label>
-            <select name="form__companies" id="companies" onchange="selectedCompany(event)" disabled class="form__dropdown">
-            </select>
-        </div>
-
-        <div class="form__group">
-            <label for="drugs">Select a drug:</label>
-            <select name="form__drugs" id="drugs" onchange="selectedDrug(event)" disabled class="form__dropdown">
-            </select>
-        </div>
-
+        <!-- This is where all the buttons are -->
         <div class="form__control-group">
-            <div class="button" id="back-btn">
+            <div class="button button--desktop" id="back-btn">
                 &larr; Back
             </div>
-            <div class="button button--notactive">
+            <div class="button button--mobile" id="back-btn">
+                &larr; 
+            </div>
+            <div class="button button--notactive button--desktop">
                 Submit
+            </div>
+            <div class="button button--notactive button--mobile">
+                &rarr;
             </div>
         </div>
    </form>

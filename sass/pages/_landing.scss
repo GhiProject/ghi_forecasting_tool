@@ -2,6 +2,11 @@
     display: grid;
     grid-template-columns: repeat(2, [col-end] minmax(min-content, 45rem)[col-end]);
 
+    /* Change the options grid to 1 x 4 if the screen gets too small for 2 x 2 */
+    @media (max-width: 37.5rem) {
+        grid-template-columns: repeat(1, [col-end] minmax(min-content, 45rem)[col-end]);
+    }
+
     justify-content: center;
     
     &__section:link,
@@ -10,6 +15,10 @@
         display: flex;
         align-items: center;
 
+        /* Without this, some laptop screens (<= 636px) have a small amount of scroll on  the landing page */
+        @media (max-height: 40rem) {
+            padding: 3rem 2rem;
+        }
 
         text-decoration: none;
 
@@ -30,5 +39,10 @@
     &__text {
         font-size: 2rem;
         color: black;
+
+        @media (max-width: 18.75rem) {
+            font-size: 1.7rem;
+        }
+
     }
 }
