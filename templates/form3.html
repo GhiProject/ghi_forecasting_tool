@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title%}
+<title>Document</title>
+{% endblock%}
+
+{% block content %}
+<div class="hero hero--form"></div>
+
+<!--Needs some kind of identifier for -->
+<div class="form-container">
+    <form action="#" class="form">
+        <div class="form__group">
+            <!--Perhaps replace placeholder with values from Google Sheets?-->
+            <label for="efficacy">Efficacy:</label>
+            <input id="efficacy" type="number" class="form__input" value=123>
+        </div>
+
+        <div class="form__group">
+            <label for="treatment-coverage">Treatment Coverage:</label>
+            <input id="treatment-coverage" type="number" class="form__input" value=123>
+        </div>
+
+        <div class="form__group">
+            <label for="DALYs">DALYs:</label>
+            <input id="DALYs" type="number" class="form__input" value=123>
+        </div>
+
+        <!--Section: Buttons-->
+        <div class="form__control-group">
+            <div class="button" id="back-btn">
+                &larr; Back
+            </div>
+            <div class="button button--notactive">
+                Submit
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
