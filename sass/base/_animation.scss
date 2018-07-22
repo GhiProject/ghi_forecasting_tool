@@ -1,0 +1,31 @@
+@keyframes zoomIn {
+    0% {
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes moveInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10rem);
+    }
+    80% {
+        transform: translateY(-1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes moveInUpNoM {
+    0% {
+        opacity: 0;
+        transform: translateY(10rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
