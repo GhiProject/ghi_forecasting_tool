@@ -124,5 +124,10 @@ def form():
     #TODO Return error status if method name is not matched
     return
 
+@app.route('/form3')
+def form3():
+    return render_template('form3.html', showthediv='1')
+
+
 if __name__ == '__main__':
     app.run(debug=False)
