@@ -221,7 +221,7 @@ body {
     .form__group:not(:last-child) {
       padding-bottom: 2rem; }
   .form__input[type="number"] {
-    height: 3rem; }
+    height: 1rem; }
   .form__control-group {
     padding: 3rem 0;
     display: flex;
@@ -254,8 +254,7 @@ body {
     animation-timing-function: ease;
     animation-fill-mode: forwards; }
   .hero--form {
-    background-image: url(../img/country.png);
-     background-size: cover;}
+    background-image: url(../img/country.png); }
   .hero__text {
     height: 100%;
     width: 35%;
