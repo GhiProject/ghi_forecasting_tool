@@ -220,6 +220,8 @@ body {
     align-items: center; }
     .form__group:not(:last-child) {
       padding-bottom: 2rem; }
+  .form__input[type="number"] {
+    height: 1rem; }
   .form__control-group {
     padding: 3rem 0;
     display: flex;

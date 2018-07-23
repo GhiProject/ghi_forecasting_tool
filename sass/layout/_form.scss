@@ -42,6 +42,10 @@
         }
     }
 
+    &__input[type="number"] {
+        height: 1rem;
+    }
+
     &__control-group {
         padding: 3rem 0;
         display: flex;
