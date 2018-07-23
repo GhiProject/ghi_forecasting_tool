@@ -177,7 +177,6 @@ body {
   .button--desktop {
     display: none; } }
 
-
 .dropdown {
   position: relative;
   /*Gives a reference point for child elements*/
@@ -215,8 +214,6 @@ body {
         margin: 0 1rem; } }
   .form__dropdown {
     width: 30rem; }
-  .form__input[type="number"] {
-    height: 1rem; }
   .form__group {
     display: flex;
     justify-content: space-between;
@@ -240,7 +237,8 @@ body {
   height: 45vh;
   position: relative;
   overflow: hidden;
-  z-index: -1; }
+  z-index: -1;
+  background-repeat: no-repeat; }
   .hero__inner {
     position: absolute;
     width: 100%;
@@ -249,7 +247,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0 20%;
-    background-repeat: no-repeat; }
     animation-name: zoomIn;
     animation-duration: 1s;
     animation-timing-function: ease;
@@ -274,6 +271,7 @@ body {
 .landing-select {
   display: grid;
   grid-template-columns: repeat(2, [col-end] minmax(min-content, 45rem) [col-end]);
+  /* Change the options grid to 1 x 4 if the screen gets too small for 2 x 2 */
   justify-content: center; }
   @media (max-width: 37.5rem) {
     .landing-select {
@@ -282,11 +280,12 @@ body {
     padding: 4rem 3rem;
     display: flex;
     align-items: center;
+    /* Without this, some laptop screens (<= 636px) have a small amount of scroll on  the landing page */
     text-decoration: none;
     transition: all .2s; }
     @media (max-height: 40rem) {
       .landing-select__section:link, .landing-select__section:visited {
-       padding: 3rem 2rem; } }
+        padding: 3rem 2rem; } }
   .landing-select__section:hover {
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
   .landing-select__icon {
@@ -308,5 +307,5 @@ body {
     font-size: 2rem;
     color: black; }
     @media (max-width: 18.75rem) {
-     .landing-select__text {
+      .landing-select__text {
         font-size: 1.7rem; } }
