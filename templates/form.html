@@ -118,6 +118,7 @@
     }
     
     function deselectForm(form_element) {
+        form_element.empty();
         /// Deselect element
         form_element.attr("disabled", "disabled");
         /// Change value to nothing
@@ -196,9 +197,10 @@
             /// Fill out company values based on disease
             response.json().then(function(json){
                 for(let i = 0; i < json.company.length; i++){
-                    _disease_options_ele.insertAdjacentHTML(
+                    let company_name = json.companies[i]["company"];
+                    _company_options_ele.insertAdjacentHTML(
                         "beforeend",
-                        `<option value="${json.companies[i]}">${json.companies[i]}</option>`
+                        `<option value="${company_name}">${company_name}</option>`
                     );
                 }
             });
@@ -216,9 +218,10 @@
             /// Fill out drug values based on country
             response.json().then(function(json){
                 for(let i = 0; i < json.drugs.length; i++){
+                    let drug_name = json.drugs[i]["drug"];
                     _drugs_options_ele.insertAdjacentHTML(
                         "beforeend",
-                        `<option value="${json.drugs[i]}">${json.drugs[i]}</option>`
+                        `<option value="${drug_name}">${drug_name}</option>`
                     );
                 }
             });
