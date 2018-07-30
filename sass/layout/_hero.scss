@@ -7,6 +7,11 @@
     z-index: -1;
     background-repeat: no-repeat;
 
+    @media (max-width: 37.5rem) {
+        background-position: center;
+        height: 15rem;
+    }
+
 
     &__inner {
         position: absolute;
@@ -21,6 +26,11 @@
         animation-duration: 1s;
         animation-timing-function: ease;
         animation-fill-mode: forwards;
+
+        @media (max-width: 37.5rem) {
+            background-position: center;
+            height: 15rem;
+        }
     }
       &--form {
         background-image: url(../img/country.png);
@@ -47,6 +57,15 @@
 
             animation: moveInUp 1s ease 1s;
             animation-fill-mode: backwards;
+
+            @media (max-width: 31.25rem) and (max-height: 31.25rem) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 37.5rem) {
+            background-position: center;
+            height: 15rem;
         }
 
    }

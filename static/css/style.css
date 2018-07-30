@@ -241,6 +241,10 @@ body {
   overflow: hidden;
   z-index: -1;
   background-repeat: no-repeat; }
+  @media (max-width: 37.5rem) {
+    .hero {
+      background-position: center;
+      height: 15rem; } }
   .hero__inner {
     position: absolute;
     width: 100%;
@@ -253,6 +257,10 @@ body {
     animation-duration: 1s;
     animation-timing-function: ease;
     animation-fill-mode: forwards; }
+    @media (max-width: 37.5rem) {
+      .hero__inner {
+        background-position: center;
+        height: 15rem; } }
   .hero--form {
     background-image: url(../img/country.png); }
   .hero__text {
@@ -269,6 +277,13 @@ body {
     .hero__text__inner {
       animation: moveInUp 1s ease 1s;
       animation-fill-mode: backwards; }
+      @media (max-width: 31.25rem) and (max-height: 31.25rem) {
+        .hero__text__inner {
+          display: none; } }
+    @media (max-width: 37.5rem) {
+      .hero__text {
+        background-position: center;
+        height: 15rem; } }
 
 .landing-select {
   display: grid;
