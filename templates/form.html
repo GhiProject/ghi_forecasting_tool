@@ -196,7 +196,7 @@
         fetch(createURL("getCompanies")).then(function(response){
             /// Fill out company values based on disease
             response.json().then(function(json){
-                for(let i = 0; i < json.company.length; i++){
+                for(let i = 0; i < json.companies.length; i++){
                     let company_name = json.companies[i]["company"];
                     _company_options_ele.insertAdjacentHTML(
                         "beforeend",
@@ -217,15 +217,17 @@
         fetch(createURL("getDrugs")).then(function(response){
             /// Fill out drug values based on country
             response.json().then(function(json){
+                //alert(json.drugs.length);
                 for(let i = 0; i < json.drugs.length; i++){
                     let drug_name = json.drugs[i]["drug"];
-                    _drugs_options_ele.insertAdjacentHTML(
+                    //alert(drug_name);
+                    _drug_options_ele.insertAdjacentHTML(
                         "beforeend",
                         `<option value="${drug_name}">${drug_name}</option>`
                     );
                 }
             });
-            _drugs_options_ele.removeAttribute("disabled");
+            _drug_options_ele.removeAttribute("disabled");
             _currently_selected_group = "companies";
         });
     }
