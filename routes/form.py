@@ -30,7 +30,7 @@ def form():
 
         country_row = request.args.get("country_row", type=int)
         country_col = request.args.get("country_col", type=int)
-
+        #pp.pprint("company name = " + company);
         ## Authorize credentials
         #scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         #creds = ServiceAccountCredentials.from_json_keyfile_name("client_secret.json", scope)
@@ -97,7 +97,7 @@ def form():
             g.db = connect_db()
             pp.pprint('Inside Company')
             if year == 2010:
-                data = g.db.execute(''' select distinct company from drugr2010 where lower(company) not like '%unmet need%' ''')
+                data = g.db.execute('select distinct company from drugr2010 where lower(company) not like "%unmet need%"')
             elif year == 2013:
                 data = g.db.execute(''' select distinct company from drugr2013 where lower(company) not like '%unmet need%' ''')
             elif year == 2015:
@@ -119,17 +119,17 @@ def form():
             # worksheet = spreadsheet.worksheet("Company")
             # TODO fill out the rest of this block, populating drug_cells and formatting JSON
             g.db = connect_db()
-            pp.pprint(comp)
+            pp.pprint(company)
             if year == 2010:
                 data = g.db.execute(
                     'select drug from drugr2010 where company = ?',
-                (comp,))
+                (company,))
             elif year == 2013:
                 data = g.db.execute('select drug from drugr2013 where company = ?',
-                (comp,))
+                (company,))
             elif year == 2015:
                 data = g.db.execute('select drug from drugr2015 where company = ?',
-                (comp,))
+                (company,))
             drug_cells = data.fetchall()
             pp.pprint(drug_cells)
             return jsonify(
