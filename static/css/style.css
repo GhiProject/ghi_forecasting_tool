@@ -209,9 +209,7 @@ body {
     .form {
       align-items: center; }
       .form label {
-        display: none; }
-      .form__control-group .button {
-        margin: 0 1rem; } }
+        display: block; } }
   .form__dropdown {
     width: 30rem; }
   .form__group {
@@ -220,13 +218,21 @@ body {
     align-items: center; }
     .form__group:not(:last-child) {
       padding-bottom: 2rem; }
+    @media (max-width: 50rem) {
+      .form__group {
+        display: block;
+        text-align: center;
+        line-height: 3rem; } }
   .form__input[type="number"] {
-    height: 1rem; }
+    height: 3rem; }
   .form__control-group {
     padding: 3rem 0;
     display: flex;
     justify-content: space-around;
     align-items: center; }
+    @media (max-width: 50rem) {
+      .form__control-group .button {
+        margin: 0 1rem; } }
 
 .header {
   display: flex; }
