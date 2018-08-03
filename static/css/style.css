@@ -209,9 +209,7 @@ body {
     .form {
       align-items: center; }
       .form label {
-        display: none; }
-      .form__control-group .button {
-        margin: 0 1rem; } }
+        display: block; } }
   .form__dropdown {
     width: 30rem; }
   .form__group {
@@ -220,6 +218,11 @@ body {
     align-items: center; }
     .form__group:not(:last-child) {
       padding-bottom: 2rem; }
+    @media (max-width: 50rem) {
+      .form__group {
+        display: block;
+        text-align: center;
+        line-height: 3rem; } }
   .form__input[type="number"] {
     height: 1rem; }
   .form__control-group {
@@ -227,6 +230,9 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center; }
+    @media (max-width: 50rem) {
+      .form__control-group .button {
+        margin: 0 1rem; } }
 
 .header {
   display: flex; }
@@ -241,6 +247,10 @@ body {
   overflow: hidden;
   z-index: -1;
   background-repeat: no-repeat; }
+  @media (max-width: 37.5rem) {
+    .hero {
+      background-position: center;
+      height: 15rem; } }
   .hero__inner {
     position: absolute;
     width: 100%;
@@ -253,6 +263,10 @@ body {
     animation-duration: 1s;
     animation-timing-function: ease;
     animation-fill-mode: forwards; }
+    @media (max-width: 37.5rem) {
+      .hero__inner {
+        background-position: center;
+        height: 15rem; } }
   .hero--form {
     background-image: url(../img/country.png); }
   .hero__text {
@@ -269,6 +283,13 @@ body {
     .hero__text__inner {
       animation: moveInUp 1s ease 1s;
       animation-fill-mode: backwards; }
+      @media (max-width: 31.25rem) and (max-height: 31.25rem) {
+        .hero__text__inner {
+          display: none; } }
+    @media (max-width: 37.5rem) {
+      .hero__text {
+        background-position: center;
+        height: 15rem; } }
 
 .landing-select {
   display: grid;

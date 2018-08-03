@@ -14,16 +14,10 @@
 
     @media (max-width: 50rem) {
 
-        label {
-            display: none;
-        }
-
         align-items: center;
 
-        &__control-group {
-            .button {
-                margin: 0 1rem;
-            }
+        label {
+            display: block;
         }
 
     }
@@ -40,10 +34,16 @@
         &:not(:last-child) {
             padding-bottom: 2rem;
         }
+
+        @media (max-width: 50rem) {
+            display: block;
+            text-align: center;
+            line-height: 3rem;
+        }
     }
 
     &__input[type="number"] {
-        height: 1rem;
+        height: 3rem;
     }
 
     &__control-group {
@@ -51,5 +51,11 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+
+        @media (max-width: 50rem) {
+            .button {
+                margin: 0 1rem;
+            }
+        }
     }
 }
