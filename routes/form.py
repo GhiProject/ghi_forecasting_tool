@@ -21,12 +21,12 @@ def form():
     ### Modified page, retrieve method values from parameters
     ###
     else:
-        method  = str(method.decode("utf-8"))
+        #method  = str(method.decode("utf-8"))
         year    = request.args.get("year", type=int)
-        country = str(request.args.get("country").decode('utf-8'))
-        disease = str(request.args.get("disease").decode('utf-8'))
-        company = str(request.args.get("company").decode('utf-8'))
-        drug    = str(request.args.get("drug").decode('utf-8'))
+        country = request.args.get("country")
+        disease = request.args.get("disease")
+        company = request.args.get("company")
+        drug    = request.args.get("drug")
 
         country_row = request.args.get("country_row", type=int)
         country_col = request.args.get("country_col", type=int)
